@@ -1,7 +1,7 @@
 console.log('js');
 
 let employeeList = [];
-
+let totalMonthly = [];
 
 $(readyTimes);
 
@@ -14,7 +14,7 @@ function readyTimes() {
     $('#targetOutput').on('click', '.firedButton', deleteEmployee);
     // $(`#totalMonthly`).append(totalMonthly);
 
-    $('#totalMonthly').on('click', '.fireButton', totalSalary);
+    $('#totalMonthly').on('click', '.firedButton', totalSalary);
     $('#totalMonthly').on('click', '#addEmployeeButton', totalSalary);
 }
 
@@ -90,7 +90,7 @@ function putOnDOM() {
             <td>${employee.lastName}</td>
             <td>${employee.id}</td>
             <td>${employee.title}</td>
-            <td>${employee.annualSalary}</td>
+            <td>${formatCurrency(employee.annualSalary)}</td>
             
             <td><button class="btn btn-danger firedButton">Delete</button></td>
         </tr>
@@ -101,37 +101,35 @@ function putOnDOM() {
     }
 }
 
-
-
-let totalMonthly = [];
-
 function totalSalary() {
     console.log('in totalSalary');
 
-    $(`#totalMonthly`).empty();
-
     console.log(totalMonthly);
 
-    // let total = 0;
-    // for (let i in employeeList) {
-    //     console.log('in loooop');
-    //     total += employeeList[i].annualSalary;
-let employee = {
-    annualSalary: $(`#salaryIn`).val()}
-
+    let total = 0;
     for (let employee of employeeList) {
-        let total = 0;
-        total += employeeList;
+        console.log('in loooop');
+        total += employeeList[i].annualSalary;
+// let employee = {
+//     annualSalary: $(`#salaryIn`).val()}
 
-        console.log(employeeList[0].annualSalary);
+    // for (let total of employeeList) {
+        // let total = 10;
+        // total += employeeList;
 
+    //     total = 0;
+    // for (let i of employeeList) {
+    //     total += employee[i].annualSalary;
+
+        
+        console.log(employeeList);
         // $('#test').append(totalMonthlyDisplay);
         totalMonthly.push(total);
         console.log(total);
+        
         monthlySalaryDOM();
-
+        return total;
     }
-
 }
 
 totalSalary();
@@ -144,17 +142,25 @@ function monthlySalaryDOM() {
     for (let employee of employeeList) {
         const totalMonthlyDisplay = $(`
         <tr>
-            <td>${employee.annualSalary}</td>
+            <td>${formatCurrency(employee.annualSalary)}</td>
+            <td>${formatCurrency(employeeList[i].salary)}</td>
             </tr>
-            $('#totalMonthly').append('help!!!');
         `);
 
-        $(`#totalMonthly`).append('test')
+        $(`#totalMonthly`).append('Where are you?');
 
     }
 }
 
-// found correct path to loop for total monthly
+function formatCurrency(number) {
+    return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'USD',
+    maximumFractionDigits: 0,
+    }).format(number);
+  };
+
+//   found correct path to loop for total monthly
 // let employee = {
 //     annualSalary: $('#salaryIn').val()
 // }
