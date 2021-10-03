@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -11,9 +12,10 @@
     <title>Salary Calculator</title>
 </head>
 <header class="header">Salary Calculator</header>
+
 <body>
     <h1>Add Employee</h1>
-    
+
     <div>
         <input placeholder="First Name" id="firstIn">
         <input placeholder="Last Name" id="lastIn">
@@ -23,8 +25,8 @@
 
         <button class="tbd" id="addEmployeeButton">Submit</button>
     </div>
-    <h2>Employees</h2>
-    <table class="table">
+    <h2 id="test">Employees</h2>
+    <table class="table table-striped">
         <thead>
             <tr>
                 <th>First Name</th>
@@ -37,9 +39,10 @@
         <tbody id="targetOutput">
             <!-- jquery will put things here -->
         </tbody>
-       
+
     </table>
-<p  class="alignRight">Total Monthly: <span id="totalMonthly"></span></p>
+    <p id="test" class="alignRight">Total Monthly:<span id="totalMonthly"></span></p>
 
 </body>
+
 </html>

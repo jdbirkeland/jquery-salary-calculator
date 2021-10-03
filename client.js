@@ -1,16 +1,20 @@
 console.log('js');
+
 let employeeList = [];
+
 
 $(readyTimes);
 
 function readyTimes() {
     console.log('jquery locked and loaded!');
-
     //click listeners
     $('#addEmployeeButton').on('click', addEmployee);
     //dynamic click listener
     // $(existsNow).on('click', existsLater, go)
     $('#targetOutput').on('click', '.firedButton', deleteEmployee);
+    // $(`#totalMonthly`).append(totalMonthly);
+    $('#totalMonthly').on('click', '.fireButton', totalMonthly);
+    $('#totalMonthly').on('click', '#addEmployeeButton', totalMonthly);
 }
 
 // function deleteEmpFromArray() {
@@ -24,15 +28,23 @@ function readyTimes() {
 
 function deleteEmployee() {
     console.log('clicked sell');
-// create a new function to go in here that removes deleted employee from employeeList
-    // employeeList = employeeList.filter(n => n !== employeeList);
-    // console.log(employeeList);
-    // let deleteEmpInfo = employeeList.splice(i,1);
-    // console.log(deleteEmpInfo);
-    // delete employeeList[i];
+    // create a new function to go in here that removes deleted employee from employeeList
+    // function deleteEmpFromArray() {
 
+    //     let employee = {
+    //         firstName: $('#firstIn').val(),
+    //         lastName: $('#lastIn').val(),
+    //         id: $('#idIn').val(),
+    //         title: $('#titleIn').val(),
+    //         annualSalary: $('#salaryIn').val()
+    //     }
+    //     console.log('In deleteEmpFromArray', employee);
 
-// deleteEmpFromArray()
+    //     employeeList.splice(employee);
+
+    // }
+    // deleteEmpFromArray();
+
     // $(this).parent().parent().remove();
     $(this).closest('tr').remove();
 }
@@ -49,8 +61,6 @@ function addEmployee() {
         annualSalary: $('#salaryIn').val()
     }
     console.log(employee);
-
-
     employeeList.push(employee);
 
     putOnDOM();
@@ -61,7 +71,11 @@ function addEmployee() {
         id: $('#idIn').val(''),
         title: $('#titleIn').val(''),
         annualSalary: $('#salaryIn').val('')
+           
     }
+    console.log(employeeList);
+    console.log(employeeList[0].annualSalary);
+
 }
 
 function putOnDOM() {
@@ -82,16 +96,50 @@ function putOnDOM() {
         `);
 
         $('#targetOutput').append(empRowDisplay);
+        $(`#test`).append('test')
     }
 }
 
+
+
+let totalMonthly = [];
+
 function totalSalary() {
+    console.log('in totalSalary');
 
-    total = 0;
-    for (let employee of employeeList) {
-        totalMonthly += employee.annualSalary / 12;
+    $( `#totalMonthly`).empty();
 
-    }
+    // let employee = {
+    //     annualSalary: $('#salaryIn').val()
+    // }
+    // console.log(employee);
+   
+    // let total=0; let i=employeeList.length; while(i--) total += employeeList[i];
+
+
+    let total = 0;
+    for (let i in employeeList) {
+        console.log('in loooop');
+        total+= employeeList[i];
+    
+    console.log(totalMonthly);
+    
+    // for (let employee of employeeList) {
+    //     let total = 0;
+        // total += employeeList[0].annualSalary;
+    
+        // console.log(employeeList[0].annualSalary);
+                
+    // }
+    
+    totalMonthly.push();
+    console.log(total);
+
+    $(`#totalMonthly`).append(totalMonthly);
 }
 
 totalSalary();
+console.log('in totalSalary');
+
+// found correct path to loop for total monthly
+
