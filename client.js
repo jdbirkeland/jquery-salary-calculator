@@ -16,8 +16,11 @@ function readyTimes() {
 
     $('#totalMonthly').on('click', '.firedButton', totalSalary);
     $('#totalMonthly').on('click', '#addEmployeeButton', totalSalary);
+    $('#totalMonthly').append('I put in 15+ hours. really feeling like Im not getting this and not cut out...');
 }
-
+// Tried to make a function to delete employee info from array: 
+// It kinda worked, just deleted all info rather then the selected one when clicked though
+// 
 // function deleteEmpFromArray() {
 //     i=0;
 //     for (let i= employeeList.length; i--;) {
@@ -29,7 +32,8 @@ function readyTimes() {
 
 function deleteEmployee() {
     console.log('clicked sell');
-    // create a new function to go in here that removes deleted employee from employeeList
+
+    // Tried to create a new function to go in here that removes deleted employee from employeeList:
     // function deleteEmpFromArray() {
 
     //     let employee = {
@@ -46,13 +50,11 @@ function deleteEmployee() {
     // }
     // deleteEmpFromArray();
 
-    // $(this).parent().parent().remove();
     $(this).closest('tr').remove();
 }
 
 function addEmployee() {
     console.log('add Employee');
-    // get inputs...
 
     let employee = {
         firstName: $('#firstIn').val(),
@@ -75,7 +77,7 @@ function addEmployee() {
 
     }
     console.log(employeeList);
-    console.log(employeeList[0].annualSalary);
+    console.log(employeeList[0].annualSalary);//testing to find this path value
 
 }
 
@@ -101,40 +103,50 @@ function putOnDOM() {
     }
 }
 
+monthlySalaryDOM();
+
+// I tried this first but could not get it to work:
+// function totalSalary() {
+//     total = 0;
+//     for (let employee of employeeList) {
+//         totalMonthly += employee.annualSalary / 12;
+//     }
+// }
+
 function totalSalary() {
     console.log('in totalSalary');
-
     console.log(totalMonthly);
 
-    let total = 0;
+    // Tried this - No Dice..
+    // let employee = 0;
+    // for (let i of employeeList) {
+    // //     console.log('in loooop');
+    //     employee += $('employeeList[i].annualSalary').val();
+
+    total = 0;
+
     for (let employee of employeeList) {
-        console.log('in loooop');
-        total += employeeList[i].annualSalary;
-// let employee = {
-//     annualSalary: $(`#salaryIn`).val()}
-
-    // for (let total of employeeList) {
-        // let total = 10;
-        // total += employeeList;
-
+        total += employee.annualSalary / 12;
+    }
+    // Tried this - No Luck..
     //     total = 0;
     // for (let i of employeeList) {
-    //     total += employee[i].annualSalary;
+    //     total += employee[i].annualSalary /12;
 
-        
-        console.log(employeeList);
-        // $('#test').append(totalMonthlyDisplay);
-        totalMonthly.push(total);
-        console.log(total);
-        
-        monthlySalaryDOM();
-        return total;
-    }
+    console.log(employeeList);
+
+    totalMonthly.push(total);
+    console.log(total);
+
+
+    return total;
+    // }
 }
 
 totalSalary();
 console.log('in totalSalary');
 
+// Tried to create a function that would empty value from '#totalValue' and update it with new value.
 function monthlySalaryDOM() {
     //clear dom of garbage employees
     $('#totalMonthly').empty();
@@ -147,18 +159,18 @@ function monthlySalaryDOM() {
             </tr>
         `);
 
-        $(`#totalMonthly`).append('Where are you?');
+        $(`#totalMonthly`).append(totalMonthlyDisplay);
 
     }
 }
 
 function formatCurrency(number) {
     return new Intl.NumberFormat('en-US', {
-    style: 'currency',
-    currency: 'USD',
-    maximumFractionDigits: 0,
+        style: 'currency',
+        currency: 'USD',
+        maximumFractionDigits: 0,
     }).format(number);
-  };
+};
 
 //   found correct path to loop for total monthly
 // let employee = {
